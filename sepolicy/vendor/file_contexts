@@ -29,6 +29,8 @@
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,jpeg/video4linux/video[0-9]+/name(/.*)?    u:object_r:sysfs_graphics:s0
 /sys/kernel/boot_wlan(/.*)?                                                             u:object_r:sysfs_wifi:s0
 /sys/module/bcmdhd/parameters/firmware_path                                             u:object_r:sysfs_wifi:s0
+/sys/devices/virtual/input/input[0-9]+/enable_ps_sensor                                 u:object_r:sysfs_tof_sensor:s0
+/sys/devices/virtual/input/input[0-9]+/set_use_case                                     u:object_r:sysfs_tof_sensor:s0
 
 # Data files
 /data/connectivity(/.*)?                      u:object_r:cnd_core_data_file:s0

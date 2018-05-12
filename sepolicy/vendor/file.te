@@ -9,6 +9,9 @@ type debugfs_rmt, debugfs_type, fs_type;
 type debugfs_wlan, debugfs_type, fs_type;
 type etsd_data_file, file_type, core_data_file_type, data_file_type;
 
+# Fingerprint
+type sysfs_fingerprint, sysfs_type, fs_type;
+
 # LTALabel
 type lta_label, fs_type;
 type qns_file, file_type;
@@ -20,8 +23,8 @@ type sysfs_msm_subsys, sysfs_type, fs_type;
 type sysfs_wifi, sysfs_type, fs_type;
 type tad_socket, file_type;
 
-# Fingerprint
-type sysfs_fingerprint, sysfs_type, fs_type;
-
 # persist
 type persist_wlan_file, file_type;
+
+# ToF sensor
+type sysfs_tof_sensor, fs_type, sysfs_type;
