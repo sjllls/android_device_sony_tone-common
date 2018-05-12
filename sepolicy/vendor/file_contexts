@@ -21,6 +21,7 @@
 /dev/socket/tad                                           u:object_r:tad_socket:s0
 /dev/fingerprint                                          u:object_r:sysfs_fingerprint:s0
 /dev/pn54x                                                u:object_r:nfc_device:s0
+/dev/socket/cashsvr(/.*)?                                 u:object_r:cashsvr_socket:s0
 
 # Sys files
 /sys/class/qns(/.*)?                                                                    u:object_r:qns_sysfs:s0
@@ -55,6 +56,7 @@
 /(vendor|system/vendor)/bin/ta_qmi_service         u:object_r:ta_qmi_service_exec:s0
 /(vendor|system/vendor)/bin/tad                    u:object_r:tad_exec:s0
 /(vendor|system/vendor)/bin/wvkbd                  u:object_r:wvkbd_exec:s0
+/(vendor|system/vendor)/bin/cashsvr                u:object_r:cashsvr_exec:s0
 
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.sony    u:object_r:hal_fingerprint_default_exec:s0

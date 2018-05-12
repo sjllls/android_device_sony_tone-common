@@ -1,2 +1,6 @@
 # Allow hal_camera_default to read sysfs
 allow hal_camera_default sysfs:file r_file_perms;
+
+unix_socket_connect(hal_camera_default, cashsvr, cashsvr)
+allow hal_camera_default cashsvr_socket:dir search;
+allow hal_camera_default cashsvr_socket:sock_file write;
