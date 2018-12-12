@@ -28,3 +28,6 @@ type persist_wlan_file, file_type;
 
 # ToF sensor
 type sysfs_tof_sensor, fs_type, sysfs_type;
+type sysfs_input_name, sysfs_type, fs_type;
+type sysfs_input_control, sysfs_type, fs_type;
+type sysfs_rgbc_sensor, fs_type, sysfs_type;
