@@ -20,7 +20,7 @@
     <integer name="config_proximityCheckTimeout">200</integer>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
-         For example, a device with notification and battery lights that supports
+     <!-- For example, a device with notification and battery lights that supports
          pulsating and RGB control would set this config to 75. -->
     <integer name="config_deviceLightCapabilities">235</integer>
 </resources>
