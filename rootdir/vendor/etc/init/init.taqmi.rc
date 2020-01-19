@@ -1,0 +1,4 @@
+# Trim Area QMI service
+service ta_qmi_service /system/vendor/bin/ta_qmi_service
+    user root
+    disabled

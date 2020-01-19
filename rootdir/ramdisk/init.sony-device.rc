@@ -1,0 +1,20 @@
+# Copyright (c) 2016 Sony Mobile Communications Inc.
+#
+# product specific configuration
+#
+import init.sony-device-common.rc
+
+on post-fs-data
+    # Fingerprint data folder
+    mkdir /data/fpc 0770 system system
+
+# charger
+on property:persist.service.battery.charge=0
+    write /sys/class/power_supply/battery/lrc_enable 0
+    write /sys/class/power_supply/battery/lrc_socmax 0
+    write /sys/class/power_supply/battery/lrc_socmin 0
+
+on property:persist.service.battery.charge=1
+    write /sys/class/power_supply/battery/lrc_socmax 60
+    write /sys/class/power_supply/battery/lrc_socmin 40
+    write /sys/class/power_supply/battery/lrc_enable 1

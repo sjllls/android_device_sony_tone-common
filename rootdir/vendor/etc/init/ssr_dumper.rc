@@ -1,0 +1,22 @@
+on boot
+    # Init subsystem restart level script
+    exec u:r:ssr_level:s0 -- /vendor/bin/sh /vendor/etc/init.ssr_level.sh "adsp venus slpi modem"
+    
+
+    # Enable ramdumps from subsystems to dump
+    
+    # bcm_wlan ssr
+    
+    # bcm_ssr_level <0:system 1:related>
+    write /sys/module/bcm_wlan_ramdump/parameters/bcm_ssr_level 1
+
+# Enable CPE subsystem ramdump
+on property:sys.boot_completed=1
+    restorecon_recursive /sys/kernel/debug/wcd_cpe
+    
+    restart ssr_dumper
+
+service ssr_dumper /vendor/bin/ssr_dumper
+    class main
+    user root
+    group root system

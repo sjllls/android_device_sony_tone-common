@@ -1,0 +1,372 @@
+# Copyright (c) 2014 Sony Mobile Communications Inc.
+#
+# init.sony-platform.rc
+#
+
+on early-init
+    
+    write /sys/module/msm_rtb/parameters/enable 0
+    
+
+on init
+    # Load persistent dm-verity state
+    verity_load_state
+
+    # SONY: Start the TrimArea Daemon. It must be started before fota-ua
+    wait /dev/block/mmcblk0p1
+    chown tad tad /dev/block/mmcblk0p1
+    chmod 0770 /dev/block/mmcblk0p1
+    class_start trimarea
+    exec system -- /sbin/wait4tad_static
+
+    # SONY: checkabortedflash should be started as early as possible.
+    # Dependant on the TrimArea Daemon.
+    exec u:r:vold:s0 -- /sbin/checkabortedflash
+
+    # Avoid long waits for rcu grace periods
+    write /sys/kernel/rcu_expedited 1
+
+    # SONY: mr need to be started before mount_all
+    exec u:r:recovery:s0 root root cache system trimarea graphics -- /sbin/mr
+    exec u:r:recovery:s0 root root cache system trimarea graphics -- /sbin/wipedata check-full-wipe
+    exec u:r:installd:s0 root root cache system trimarea graphics -- /sbin/wipedata check-keep-media-wipe
+    exec u:r:recovery:s0 root root cache system trimarea graphics -- /sbin/wipedata check-umount
+
+    # Enable panic on out of memory
+    
+
+    #Enable Bluetooth HFP 1.7
+    setprop ro.bluetooth.hfp.ver 1.7
+
+    # Bluetooth address setting
+    setprop ro.bt.bdaddr_path "/data/etc/bluetooth_bdaddr"
+
+    # Disable split a2dp
+    setprop persist.vendor.bt.enable.splita2dp false
+
+    write /proc/sys/vm/swappiness 100
+
+on late-init
+    mkdir /mnt/tmp
+    mount tmpfs tmpfs /mnt/tmp nosuid mode=0755,uid=0,gid=0
+
+on fs
+    insmod /system/lib/modules/ecryptfs.ko
+    insmod /system/lib/modules/kscl.ko
+
+    # start clearpad_post_probe when filesystem is available for fwflash
+    write /sys/devices/virtual/input/clearpad/post_probe_start 1
+
+    # mount LTA-Label here as from Kitakami the mount path is changed.
+    mkdir /lta-label 0555 system system
+    wait /dev/block/bootdevice/by-name/LTALabel
+    mount ext4 /dev/block/bootdevice/by-name/LTALabel /lta-label nosuid nodev noatime noexec ro barrier=0 context=u:object_r:lta_label:s0
+    chown system system /lta-label
+    chmod 0555 /lta-label
+    # create the symlink of lta-label
+    symlink /lta-label /system/etc/lta-label
+
+    # SONY: Fota must be started after partitions are mounted
+    exec u:r:fota-ua:s0 -- /sbin/fota-ua c
+
+    write /sys/devices/soc/74a4900.sdhci/mmc_host/mmc1/clkgate_delay 1
+
+on post-fs
+
+    # Adjust parameters for dm-verity device
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+
+    # Update dm-verity state and set partition.*.verified properties
+    verity_update_state
+
+    # led RGB
+    chown system system /sys/class/leds/rgb/sync_state
+    chown system system /sys/class/leds/rgb/start_blink
+    chown system system /sys/class/leds/led:rgb_red/brightness
+    chown system system /sys/class/leds/led:rgb_red/lut_pwm
+    chown system system /sys/class/leds/led:rgb_red/step_duration
+    chown system system /sys/class/leds/led:rgb_red/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_red/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_red/max_single_brightness
+    chown system system /sys/class/leds/led:rgb_red/max_mix_brightness
+    chown system system /sys/class/leds/led:rgb_green/brightness
+    chown system system /sys/class/leds/led:rgb_green/lut_pwm
+    chown system system /sys/class/leds/led:rgb_green/step_duration
+    chown system system /sys/class/leds/led:rgb_green/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_green/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_green/max_single_brightness
+    chown system system /sys/class/leds/led:rgb_green/max_mix_brightness
+    chown system system /sys/class/leds/led:rgb_blue/brightness
+    chown system system /sys/class/leds/led:rgb_blue/lut_pwm
+    chown system system /sys/class/leds/led:rgb_blue/step_duration
+    chown system system /sys/class/leds/led:rgb_blue/pause_lo_multi
+    chown system system /sys/class/leds/led:rgb_blue/pause_hi_multi
+    chown system system /sys/class/leds/led:rgb_blue/max_single_brightness
+    chown system system /sys/class/leds/led:rgb_blue/max_mix_brightness
+
+    # backlight
+    chown system system /sys/class/leds/wled/bl_scale
+    chown system system /sys/class/leds/wled/area_count
+
+    # start clearpad_post_probe when filesystem is available for fwflash
+    write /sys/devices/virtual/input/clearpad/post_probe_start 1
+
+    chmod 0440 /sys/class/power_supply/bms/battery_type
+    chmod 0600 /sys/class/power_supply/bms/charge_full_raw
+
+    start charge_logging
+
+    chown qns qns /sys/class/qns
+    chown qns qns /sys/class/qns/alarm
+    chown qns qns /sys/class/qns/charge_current
+    chown qns qns /sys/class/qns/charging_state
+    chown qns qns /sys/class/qns/current_now
+    chown qns qns /sys/class/qns/design
+    chown qns qns /sys/class/qns/fcc
+    chown qns qns /sys/class/qns/options
+    chown qns qns /sys/class/qns/soc
+    chown qns qns /sys/class/qns/temp
+    chown qns qns /sys/class/qns/voltage
+    chown qns qns /sys/class/qns/battery_type
+    start qns
+    # for chargeonly
+    exec /system/bin/chargemon
+
+    # System setting access from white balance app into fb.
+    chown system graphics /dev/graphics/fb0
+    chown system graphics /dev/graphics/fb1
+    chown system graphics /dev/graphics/fb2
+
+
+    # Make sure that recovery/fota exists with the correct permissions
+    mkdir /cache/recovery/fota 0770 system cache
+    restorecon /cache/recovery/fota
+
+    
+
+on post-fs-data
+
+    
+
+    # SONY: Camera
+    chown cameraserver camera /sys/devices/sony_camera_0/info
+    chmod 0770 /sys/devices/sony_camera_0/info
+    chown cameraserver camera /sys/devices/sony_camera_1/info
+    chmod 0770 /sys/devices/sony_camera_1/info
+
+    # create directory for wfd
+    mkdir /data/wfd 0770 system system
+
+    # Create directory for hdcp-sdk
+    
+
+    # SONY: Create directory for partial dump
+    mkdir /data/crashdata 0770 root system
+
+    # Restore the security context for dump directories
+    exec u:r:restorecon:s0 -- /vendor/bin/restorecon -RF /data/crashdata/
+    trigger partial_dump_dir_complete
+
+    # Create directory for font change support
+    exec u:r:font_selector_make_dir:s0 system -- /system/bin/font-selector-make-dir.sh
+
+    # create directory for scd
+    mkdir /dev/socket/scd 0755 system system
+    mkdir /data/scd 0700 system system
+
+    # create directory for widevine
+    mkdir /data/wv 0700 media media
+
+    # Create directory to store logs
+    mkdir /data/system/log 0770 root system
+    chown root system /data/system/log
+    chmod 0770 /data/system/log
+
+    # create directory for ric data
+    
+
+    # SONY: Create a dir on data partition not to be deleted during mr and wipedata
+    mkdir /data/persist 0770 persist_rw persist_rw
+
+on early-boot
+    # ta_qmi_service use wakelock before on boot, so add permission here.
+    chown radio wakelock /sys/power/wake_lock
+    chown radio wakelock /sys/power/wake_unlock
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
+    start ta_qmi_service
+
+    start sct_service
+    start mlog_qmi_service
+
+
+    # Debug config for clearpad
+    
+
+    # SONY: for Bluesleep
+    chown bluetooth net_bt /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt /proc/bluetooth/sleep/btwrite
+    chmod 0660 /proc/bluetooth/sleep/lpm
+    chmod 0660 /proc/bluetooth/sleep/btwrite
+
+    # Load WLAN driver
+    insmod /system/lib/modules/bcmdhd.ko
+
+on boot
+    # Setting to use rndis_qc driver
+    exec u:r:usb_device_mode:s0 -- /vendor/bin/sh /vendor/bin/init.usbmode.platform.sh "set_rndis_qc"
+
+    # for USB HOST
+    chown system system /sys/module/qpnp_smbcharger/parameters/id_polling_timeout
+    chown system system /sys/module/qpnp_smbcharger/parameters/start_id_polling
+    chown system system /sys/module/qpnp_smbcharger/parameters/id_polling_enabled
+    chmod 0660 /sys/module/qpnp_smbcharger/parameters/id_polling_timeout
+    chmod 0660 /sys/module/qpnp_smbcharger/parameters/start_id_polling
+    chmod 0660 /sys/module/qpnp_smbcharger/parameters/id_polling_enabled
+
+    write /sys/module/qpnp_smbcharger/parameters/id_polling_timeout 30000
+    write /sys/module/qpnp_smbcharger/parameters/start_id_polling 1
+
+
+on verity-logging
+    exec u:r:slideshow:s0 -- /sbin/slideshow -t 7000 warning/verity_red_1 warning/verity_red_2
+
+on property:sys.shutdown.requested=*
+    write /sys/class/power_supply/battery/int_cld 1
+
+on property:persist.service.battery.smt_chg=activate
+    write /sys/class/power_supply/battery/smart_charging_activation 1
+
+on property:persist.service.battery.smt_chg=charging_suspend
+    write /sys/class/power_supply/battery/smart_charging_interruption 1
+
+on property:persist.service.battery.smt_chg=charging_resume
+    write /sys/class/power_supply/battery/smart_charging_interruption 0
+
+
+
+
+# Set bdi ratio to 1 for external sdcard
+on property:sys.boot_completed=1
+    write /sys/class/block/mmcblk1/bdi/max_ratio 1
+
+    # SONY: Enable wakeup irq module
+    write /sys/devices/platform/wakeup_debug.0/enable 1
+
+on property:sys.lcd_fpks=*
+    write /sys/devices/mdss_dsi_panel/change_fpks ${sys.lcd_fpks}
+
+on property:gsm.nitz.time=*
+    start scdnotifier_nitz
+    start wvnitzd
+
+# SONY: TrimArea Daemon
+# Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
+service tad_static /sbin/tad_static /dev/block/bootdevice/by-name/TA 0,16
+    user tad
+    group tad root
+    socket tad stream 0660 system trimarea
+    class trimarea
+
+# Config file updater
+service ota-updater /vendor/bin/ota-config-updater.sh
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+
+# set up symbolic links to proper configuration file
+service config-linker /vendor/bin/multi-cdf-symlinker.sh
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+
+# Note! that there is a dependency towards taimport property
+# the property is set immediatly after execution of taimport.
+on property:init.taimport.ready=true
+    mkdir /data/customization 0755 system system
+    mkdir /data/customization/ota-config 0755 system system
+    restorecon /data/customization
+    start config-linker
+
+service wvkbd_installer /vendor/bin/wvkbd
+    class late_start
+    user system
+    group system
+    oneshot
+
+# SONY: Start Memory Pressure Observer daemon
+service mpobserver /system/bin/mpobserver
+    class main
+    user root
+
+service qns /vendor/bin/qns -d /qns -l /qns
+    user qns
+    group qns
+    socket qnsbsd stream 660 qns system
+    disabled
+
+service charge_logging /system/bin/charge_logging
+    user root
+    disabled
+
+# Secure Clock service
+service scd /system/bin/scd
+    class late_start
+    user system
+    group system
+
+service scdnotifier_nitz /system/bin/scdnotifier nitz
+    class main
+    user system
+    group system
+    oneshot
+    disabled
+
+service wvnitzd /vendor/bin/wvnitzd nitz
+    class main
+    user media
+    group media
+    oneshot
+    disabled
+
+# modem log probe service
+# SONY_BEGIN ( Change to vendor partition for mlog_qmi_service )
+#service mlog_qmi_service /system/bin/mlog_qmi_service
+service mlog_qmi_service /system/vendor/bin/mlog_qmi_service
+# SONY_END ( Change to vendor partition for mlog_qmi_service )
+    user root
+    disabled
+
+# SONY:  LOTA deamon
+service lota /system/bin/lota
+    class main
+    user nobody
+
+
+
+
+
+# tpm-service
+# Allows other system application to use tpm from java
+service tpm-service /system/bin/tpm-service
+    class late_start
+    user tpm
+    group system tpm trimarea drmrpc
+
+# Start RIC
+service ric /sbin/ric
+    disabled
+    user root
+    group root drmrpc trimarea system
+    class main
+
+# gtsconfd
+service gtsconfd /system/bin/gtsconfd
+    class main
+    socket gts_socket seqpacket 0660 root system
+
+import init.sony.rc

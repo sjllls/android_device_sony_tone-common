@@ -1,0 +1,4 @@
+# Secure Config Transfer service
+service sct_service /vendor/bin/sct_service
+   user root
+   disabled

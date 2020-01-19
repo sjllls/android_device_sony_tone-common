@@ -1,0 +1,31 @@
+on fs
+    # SONY: setup idd and rca partition
+    chown idd idd /idd
+    chmod 0751 /idd
+    exec /vendor/bin/rm -r /idd/lost+found
+    symlink /idd /mnt/idd
+    chown idd idd /rca
+    chmod 0750 /rca
+    exec /vendor/bin/rm -r /rca/lost+found
+    symlink /rca /mnt/rca
+    exec u:r:startup-logger:s0 -- /vendor/bin/sh /vendor/etc/init.kernel_logging.sh
+
+on post-fs-data
+    # Remove lost+found in user and userdebug
+    start cleanlostfound
+    
+    mkdir /idd/lost+found 0770 root root
+    mkdir /idd/output 0755 idd idd
+    mkdir /idd/socket 0711 idd idd
+    mkdir /idd/startup-prober 0700 root root
+    
+    exec u:r:restorecon:s0 -- /vendor/bin/restorecon -RF /idd
+    mkdir /rca/plugins 0750 idd idd
+    exec u:r:restorecon:s0 -- /vendor/bin/restorecon -RF /rca
+
+# SONY: IDD daemon
+service iddd /vendor/bin/iddd
+    class core
+    user idd
+    group idd log inet trimarea
+    writepid /dev/cpuset/system-background/tasks
