@@ -14,8 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Inherit from the proprietary version
--include vendor/sony/tone-common/BoardConfigVendor.mk
 
 BOARD_VENDOR := sony
 
@@ -58,7 +56,6 @@ TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
 # Properties
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 TARGET_VENDOR_PROP += $(VENDOR_PATH)/vendor.prop
 
 # ANT+
@@ -133,9 +130,6 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Extended Filesystem Support
-TARGET_EXFAT_DRIVER := sdfat
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
 
@@ -199,3 +193,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# Inherit from the proprietary version
+-include vendor/sony/tone-common/BoardConfigVendor.mk
