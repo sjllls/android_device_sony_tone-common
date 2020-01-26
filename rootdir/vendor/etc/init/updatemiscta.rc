@@ -1,5 +1,0 @@
-service updatemiscta /vendor/bin/updatemiscta
-    class main
-    user updatemiscta
-    group trimarea
-    oneshot

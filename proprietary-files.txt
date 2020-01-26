@@ -511,8 +511,6 @@ lib/lib_fpc_tac_shared.so
 lib64/lib_fpc_tac_shared.so
 vendor/lib/libsys-utils.so
 vendor/lib64/libsys-utils.so
-vendor/bin/hw/illumination_service
-vendor/etc/init/init.illumination_service.rc
 vendor/lib/hw/lights.default.so
 vendor/lib64/hw/lights.default.so
 
@@ -544,8 +542,6 @@ vendor/bin/ipacm-diag
 # LIGHT
 vendor/lib/vendor.semc.hardware.light@1.0_vendor.so
 vendor/lib64/vendor.semc.hardware.light@1.0_vendor.so
-vendor/etc/init/vendor.semc.hardware.light@1.0-service.rc
-vendor/bin/hw/vendor.semc.hardware.light@1.0-service
 
 # MSS
 vendor/bin/mssconfig
@@ -647,11 +643,14 @@ lib64/vendor.semc.system.idd@1.0.so
 vendor/bin/iddd
 vendor/bin/lota
 vendor/bin/restorecon
+vendor/bin/mm-qcamera-daemon
 vendor/bin/hw/vendor.semc.system.idd@1.0-service
+vendor/bin/hw/vendor.semc.system.idd.fallback@1.0-service
 vendor/bin/idd-logreader
 vendor/etc/iddd.conf
 vendor/etc/init/lota.rc
 vendor/etc/init/vendor.semc.system.idd@1.0-service.rc
+vendor/etc/init/vendor.semc.system.idd.fallback@1.0-service.rc
 vendor/etc/security/idd_config.pem
 vendor/etc/security/idd_report.pem
 vendor/lib/libprotobuf-c.so
@@ -661,6 +660,7 @@ vendor/lib/libprotobuf-cpp-2.3.0-lite.so
 vendor/lib64/libjansson.so
 vendor/lib64/libprotobuf-c.so
 vendor/lib64/libprotobuf-cpp-2.3.0-lite.so
+vendor/lib64/vendor.semc.system.idd.fallback@1.0_vendor.so
 
 # SOMC: secd
 lib64/vendor.semc.hardware.secd@1.0.so
@@ -677,7 +677,7 @@ vendor/lib64/libdevice_security_vendor.so
 vendor/lib64/libprotobuf-c.so
 
 # SOMC: TA daemon / MiscTA
--sbin/tad_static;rootfs
+-sbin/tad_static:vendor/bin/tad_static
 -sbin/wait4tad_static;rootfs
 -sbin/fsckwait;rootfs
 -sbin/ua-modem-switcher;rootfs
@@ -696,8 +696,10 @@ vendor/bin/hw/vendor.somc.hardware.miscta@1.0-service
 vendor/bin/ta_qmi_service
 vendor/etc/init/vendor.somc.hardware.miscta@1.0-service.rc
 -vendor/lib/libmiscta.so
+-vendor/lib/libta_drm_ext.so
 vendor/lib/libta.so
 -vendor/lib64/libmiscta.so
+-vendor/lib64/libta_drm_ext.so
 vendor/lib64/libta.so
 -priv-app/CustomizationSelector/CustomizationSelector.apk
 
@@ -761,7 +763,6 @@ vendor/lib64/libsomcqnswrapper.so
 bin/ssr_dumper
 vendor/etc/ssrdumper_config.xml
 vendor/etc/ssrdumper_target.xml
-vendor/etc/init.ssr_level.sh
 vendor/bin/post_dumper
 vendor/lib/libdumpframework.so
 vendor/lib/libsnappy.so
@@ -1482,6 +1483,7 @@ vendor/lib64/libdisp-aba.so
 # QMI
 etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
+vendor/bin/qmuxd
 vendor/bin/irsc_util
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
@@ -1611,7 +1613,6 @@ vendor/bin/ims_rtp_daemon
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
 vendor/bin/imsrcsd
-vendor/bin/init.qti.ims.sh
 vendor/lib/lib-imscmservice.so
 vendor/lib/lib-imsSDP.so
 vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
@@ -1649,6 +1650,7 @@ lib64/libsensor1.so
 lib64/libsensor_reg.so
 lib64/libqmi_cci_system.so
 lib64/sensors.finger-pickup.so
+vendor/bin/sensors.qcom
 vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
 vendor/lib/hw/activity_recognition.msm8996.so
 vendor/lib/libsdsprpc.so
@@ -1724,6 +1726,7 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 # Wi-Fi
 lib64/vendor.somc.hardware.wifi.supplicant@1.0.so
 vendor/bin/cnss-daemon
+vendor/bin/hw/wpa_supplicant
 vendor/bin/hw/vendor.somc.hardware.wifi@1.0-service
 vendor/etc/init/vendor.somc.hardware.wifi@1.0-service.rc
 vendor/lib64/vendor.somc.hardware.wifi@1.0_vendor.so

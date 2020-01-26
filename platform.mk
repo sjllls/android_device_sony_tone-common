@@ -198,23 +198,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
-# Init
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,${LOCAL_PATH}/rootdir/vendor,$(TARGET_COPY_OUT_VENDOR))
-
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
-    init.sony.rc \
-    init.sony.usb.rc \
-    init.sony-bugreport.rc \
-    init.sony-device.rc \
-    init.sony-device-common.rc \
-    init.sony-platform.rc \
-    init.target.rc \
-    init.usb.configfs.rc \
-    init.usb.rc \
+    init.device.rc \
+    init.qcom.power.rc \
+    init.qcom.usb.rc \
     ueventd.rc \
+    init.radio.sh
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -293,7 +284,8 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service-qti
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml
+    $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # QCOM
 PRODUCT_COPY_FILES += \
@@ -341,6 +333,10 @@ PRODUCT_BOOT_JARS += \
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
+
+# Thermal
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # VNDK
 PRODUCT_PACKAGES += \

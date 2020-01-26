@@ -1,5 +1,0 @@
-on partial_dump_dir_complete
-    # Support post_dumper in user variant
-    exec /vendor/bin/post_dumper -m
-
-

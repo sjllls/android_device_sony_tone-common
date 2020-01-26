@@ -1,3 +1,0 @@
-on early-boot
-    # Init selinux trap module (except for production build)
-    #exec /vendor/bin/sh /vendor/etc/setup_selinux_trap.sh
