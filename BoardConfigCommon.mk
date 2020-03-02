@@ -65,9 +65,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
-# Properties
-TARGET_VENDOR_PROP += $(VENDOR_PATH)/vendor.prop
-
 # ANT+
 # BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
@@ -162,10 +159,9 @@ TARGET_USES_MKE2FS := true
 # Platform witout a vendor partition
 TARGET_COPY_OUT_VENDOR := system/vendor
 
-
 # Power
 TARGET_HAS_NO_WIFI_STATS := true
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
+# TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/input/clearpad/wakeup_gesture"
 TARGET_USES_INTERACTION_BOOST := true
 
 # QCOM
@@ -179,6 +175,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # RIL
 TARGET_RIL_VARIANT := caf
+
+### SYSTEM PROPS
+# Add device-specific ones
+TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

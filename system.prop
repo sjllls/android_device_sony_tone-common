@@ -2,32 +2,6 @@
 ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 
 # Audio
-af.fast_track_multiplier=1
-audio.deep_buffer.media=true
-audio.offload.min.duration.secs=15
-audio.offload.video=true
-persist.vendor.audio.fluence.speaker=true
-persist.vendor.audio.fluence.voicecall=true
-persist.vendor.audio.fluence.voicerec=false
-persist.vendor.bt.enable.splita2dp=false
-ro.config.media_vol_steps=25
-ro.config.vc_call_vol_steps=7
-ro.vendor.audio.sdk.fluencetype=fluence
-ro.vendor.audio.sdk.ssr=false
-vendor.audio.dolby.ds2.enabled
-vendor.audio.dolby.ds2.hardbypass=false
-vendor.audio_hal.period_size=192
-vendor.audio.hw.aac.encoder=true
-vendor.audio.offload.buffer.size.kb=64
-vendor.audio.offload.gapless.enabled=true
-vendor.audio.offload.multiaac.enable=true
-vendor.audio.offload.multiple.enabled=true
-vendor.audio.offload.passthrough=false
-vendor.audio.offload.track.enable=true
-vendor.audio.parser.ip.buffer.size=262144
-vendor.audio.safx.pbe.enabled=true
-vendor.audio.tunnel.encode=false
-vendor.voice.path.for.pcm.voip=true
 sony.effect.use.proxy=true
 
 # Bluetooth
@@ -62,6 +36,9 @@ ro.qcom.ad.sensortype=2
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
+# Fingerprint
+persist.qfp=false
 
 # Graphics
 debug.egl.hw=1
@@ -118,6 +95,15 @@ persist.data.df.agg.dl_size=4096
 persist.data.df.mux_count=8
 persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
+
+# SEMC Settings
+# /system/etc/prop.default
+ro.semc.version.sw=1304-1564
+ro.semc.version.sw_revision=41.3.A.2.149
+ro.semc.version.sw_variant=R1E
+ro.semc.version.sw_type=user
+ro.semc.product.model=F8131
+ro.semc.version.fs=GENERIC
 
 # TimeService
 persist.timed.enable=true
