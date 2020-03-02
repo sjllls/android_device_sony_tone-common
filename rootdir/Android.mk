@@ -55,3 +55,23 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := vendor/init.radio.sh
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/bin
 include $(BUILD_PREBUILT)
+
+# EMMC firmware files
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init_emmc_15-424A4E423452-0f_bin
+LOCAL_MODULE_STEM  := 15-424A4E423452-0f.bin
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := lib/firmware/emmc/15-424A4E423452-0f.bin
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/lib/firmware/emmc
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init_emmc_catalog_txt
+LOCAL_MODULE_STEM  := catalog.txt
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := lib/firmware/emmc/catalog.txt
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/lib/firmware/emmc
+include $(BUILD_PREBUILT)

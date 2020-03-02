@@ -160,6 +160,11 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
+# EMMC firmware
+PRODUCT_PACKAGES += \
+    init_emmc_15-424A4E423452-0f_bin \
+    init_emmc_catalog_txt
+
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
