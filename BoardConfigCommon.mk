@@ -184,6 +184,10 @@ TARGET_RIL_VARIANT := caf
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
+### SYSTEM PROPS
+# Add device-specific ones
+TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
+
 # BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Wifi
