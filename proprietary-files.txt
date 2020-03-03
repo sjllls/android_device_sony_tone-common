@@ -688,6 +688,9 @@ vendor/lib/libdevice_security.so
 vendor/lib/libprotobuf-c.so
 vendor/lib/libcredential-manager-service.so
 vendor/lib/libplstorage.so
+vendor/lib/lib_asb_tee.so
+vendor/lib64/libstartup-reason.so
+vendor/lib64/lib_asb_tee.so
 vendor/lib64/libplstorage.so
 vendor/lib64/libcredential-manager-service.so
 vendor/lib64/libdevice_security_vendor.so
@@ -990,8 +993,9 @@ vendor/lib/soundfx/libsonysweffect.so
 vendor/lib/soundfx/libvisualizer.so
 vendor/lib/soundfx/libvolumelistener.so
 vendor/lib/soundfx/libznrwrapper.so
-vendor/lib/hw/sound_trigger.primary.msm8996.so
-vendor/lib64/hw/sound_trigger.primary.msm8996.so
+vendor/lib/libsmwrapper.so|cd54c73eaafbe3fe9eacafc845a04d25e44fe553
+vendor/lib/hw/sound_trigger.primary.msm8996.so|3355f8f72e6a18401a68a2c3759afe52ce405ba7
+vendor/lib64/hw/sound_trigger.primary.msm8996.so|8dda58f06a4cbc7d6f6de821d37e3fd68801be89
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
@@ -1868,4 +1872,5 @@ vendor/bin/hw/kobjeventd
 vendor/etc/init/init.kobjeventd.rc
 vendor/lib/kobjeventd/touch_cover.so
 vendor/lib64/kobjeventd/touch_cover.so
+
 

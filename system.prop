@@ -1,9 +1,6 @@
 # Adreno
 ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 
-# Audio
-sony.effect.use.proxy=true
-
 # Bluetooth
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
@@ -99,8 +96,11 @@ persist.data.df.dev_name=rmnet_usb0
 # SEMC Settings
 # /system/etc/prop.default
 ro.semc.version.sw=1304-1564
+ro.semc.version.cust=1304-1564
 ro.semc.version.sw_revision=41.3.A.2.149
+ro.semc.version.fs_revision=41.3.A.2.149
 ro.semc.version.sw_variant=R1E
+ro.semc.version.cust_revision=R1E
 ro.semc.version.sw_type=user
 ro.semc.product.model=F8131
 ro.semc.version.fs=GENERIC

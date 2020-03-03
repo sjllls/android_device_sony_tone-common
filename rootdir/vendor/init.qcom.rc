@@ -80,10 +80,10 @@ on fs
     write /proc/sys/vm/swap_thresh_cma_free_pages 7680
 
     # Qnovo
-    mkdir /mnt/qns 0750 oem_2985 oem_2985
-    chown oem_2985 oem_2985 /mnt/qns
-    chmod 0750 /mnt/qns
-    restorecon_recursive /mnt/qns
+    mkdir /qns 0750 oem_2985 oem_2985
+    chown oem_2985 oem_2985 /qns
+    chmod 0750 /qns
+    restorecon_recursive /qns
 
     chown oem_2985 oem_2985 /sys/class/qns
     chown oem_2985 oem_2985 /sys/class/qns/alarm
@@ -134,6 +134,12 @@ on post-fs
 
     # start clearpad_post_probe when filesystem is available for fwflash
     write /sys/devices/virtual/input/clearpad/post_probe_start 1
+
+service logcat_charger /system/bin/logcat -b all -f /cache/logcat.txt -v threadtime
+    class main
+    user root
+    group system
+    disabled
 
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
@@ -349,6 +355,8 @@ on post-fs-data
     # Create directory for scd
     mkdir /dev/socket/scd 0755 system system
     mkdir /data/scd 0700 system system
+
+    start logcat_charger
 
     # SONY: Camera
     chown cameraserver camera /sys/devices/sony_camera_0/info
@@ -638,7 +646,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service qns /vendor/bin/qns -d /mnt/qns -l /mnt/qns
+service qns /vendor/bin/qns -d /qns -l /qns
     user oem_2985
     group oem_2985
     socket qnsbsd stream 660 oem_2985 system
