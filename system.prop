@@ -4,6 +4,8 @@ ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
 # Bluetooth
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
+ro.bt.bdaddr_path="/data/misc/bdaddr"
+ro.qualcomm.bt.hci_transport=smd
 
 # Camera
 camera.disable_zsl_mode=1

@@ -135,13 +135,13 @@ AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
-# Bluetooth
+# BCM
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
-BOARD_HAS_QCA_BT_ROME := true
+BOARD_CUSTOM_BT_CONFIG := $(VENDOR_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-QCOM_BT_USE_BTNV := true
-QCOM_BT_USE_SMD_TTY := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BCM_FM := true
+
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -253,18 +253,20 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
-# Wifi
-BOARD_HAS_QCOM_WLAN := true
-BOARD_HAS_QCOM_WLAN_SDK := true
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+# WiFi
+BOARD_WLAN_DEVICE                := bcmdhd
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_FW_PATH_AP := "ap"
-WIFI_DRIVER_FW_PATH_STA := "sta"
-WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+WIFI_BUS := PCIE
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin"
+
+# WPA
+TARGET_USES_64_BIT_BCMDHD := true
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/sony/tone-common/BoardConfigVendor.mk
