@@ -137,18 +137,16 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # BCM
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(VENDOR_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_CUSTOM_BT_CONFIG := $(VENDOR_PATH)/bluetooth/vnd_generic.txt
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_BCM_FM := true
 
-
 # Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-TARGET_USES_QTI_CAMERA_DEVICE := true
-TARGET_USES_QTI_CAMERA2CLIENT := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_USES_MEDIA_EXTENSIONS := true
+USE_CAMERA_STUB := true
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -206,6 +204,10 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# NFC
+BOARD_NFC_CHIPSET := pn547
+NFC_NXP_CHIP_TYPE := PN547C2
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -253,20 +255,16 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
-# WiFi
-BOARD_WLAN_DEVICE                := bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_BUS := PCIE
-WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/wlan/bcmdhd/fw_bcmdhd.bin"
-
-# WPA
-TARGET_USES_64_BIT_BCMDHD := true
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
+# Wi-Fi definitions for Broadcom solution
+BOARD_WLAN_DEVICE           := bcmdhd
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 
 # Inherit from the proprietary version
 -include vendor/sony/tone-common/BoardConfigVendor.mk

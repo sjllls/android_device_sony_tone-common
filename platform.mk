@@ -74,8 +74,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Device was launched with N
-PRODUCT_SHIPPING_API_LEVEL := 24
+# Device was launched with M
+PRODUCT_SHIPPING_API_LEVEL := 23
 
 # Additional native libraries
 PRODUCT_COPY_FILES += \
@@ -129,6 +129,17 @@ PRODUCT_COPY_FILES += \
 
 #WiFi BCM configurations
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/fstman.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/fstman.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
 #WiFi packages
 PRODUCT_PACKAGES += \
     hostapd \
@@ -143,12 +154,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
     camera.msm8996 \
-    Snap \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    Snap
 
 # CNE
 PRODUCT_PACKAGES += \
@@ -236,6 +243,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common
 
+# Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
@@ -297,12 +305,15 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl \
-    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
-    nfc_nci.msm8996 \
     NfcNci \
+    nfc_nci.pn54x.default \
     Tag
+
+# NFC configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -360,8 +371,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service
+    sensors.msm8996
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -403,13 +413,3 @@ PRODUCT_PACKAGES += \
 # VNDK-SP:
 PRODUCT_PACKAGES += \
     vndk-sp
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/fstman.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/fstman.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
