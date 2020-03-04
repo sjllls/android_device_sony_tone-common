@@ -19,6 +19,9 @@ persist.cne.feature=1
 # Debug switch
 persist.debug.coresight.config=none
 
+# DRM
+drm.service.enabled=true
+
 # DPM
 persist.vendor.dpm.feature=1
 
@@ -68,6 +71,7 @@ ro.nfc.port=I2C
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.qti.sys.fw.bg_apps_limit=60
+ro.am.reschedule_service=true
 
 # Priv-app permissions whitelist
 ro.control_privapp_permissions=log
@@ -112,6 +116,7 @@ persist.timed.enable=true
 
 # USB
 sys.usb.controller=6a00000.dwc3
+ro.usb.pid_suffix=1E1
 
 # Wifi
 wifi.interface=wlan0
