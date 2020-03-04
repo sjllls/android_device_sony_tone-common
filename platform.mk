@@ -384,6 +384,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# Time service
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep \
+
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1

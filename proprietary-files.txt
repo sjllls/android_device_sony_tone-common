@@ -1668,12 +1668,6 @@ vendor/lib64/vendor.semc.hardware.thermal@1.0.so
 vendor/lib/liblights-core.so
 vendor/lib64/liblights-core.so
 
-# Time services
--vendor/app/TimeService/TimeService.apk
--vendor/lib/libtime_genoff.so
--vendor/lib64/libtime_genoff.so
-vendor/bin/time_daemon
-
 # TUI
 lib/vendor.qti.hardware.tui_comm@1.0.so
 lib64/vendor.qti.hardware.tui_comm@1.0.so
