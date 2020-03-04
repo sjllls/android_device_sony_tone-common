@@ -101,7 +101,7 @@ on fs
     start qns
 
     # Sony IDD
-    mkdir /idd 0751 idd idd
+    mkdir /idd 0751 oem_2987 oem_2987
     chown oem_2987 oem_2987 /idd
     chmod 0751 /idd
     exec /vendor/bin/rm -r /idd/lost+found
@@ -608,12 +608,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
     user root
     group root
 
-service qmuxd vendor/bin/qmuxd
-    class main
-    user root
-    group radio audio bluetooth gps nfc diag
-    disabled
-
 service netmgrd /vendor/bin/netmgrd
     class main
     disabled
@@ -756,9 +750,6 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
 
 on property:persist.radio.multisim.config=dsds
     enable ril-daemon2
-
-on property:ro.boot.baseband=msm
-    enable qmuxd
 
 on property:persist.data.mode=concurrent
     enable qti

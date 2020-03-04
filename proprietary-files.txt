@@ -457,15 +457,7 @@ vendor/firmware/a530v3_gpmu.fw2
 vendor/firmware/a530v3_seq.fw2
 vendor/firmware/a540_gpmu.fw2
 
-# FRAMEWORK_DEPENDENCIES
-etc/permissions/com.sonyericsson.idd.xml
-etc/permissions/com.sonymobile.getmore.api.xml
-framework/com.sonyericsson.idd_impl.jar
-framework/com.sonymobile.getmore.api.jar
-
 # FIDO
--app/FidoClient/FidoClient.apk
--app/FidoCryptoService/FidoCryptoService.apk
 lib/libFidoCryptoJNI.so
 lib/libFidoCrypto_system.so
 lib64/libFidoCryptoJNI.so
@@ -486,8 +478,6 @@ etc/firmware/fidocrypto.b04
 etc/firmware/fidocrypto.b05
 etc/firmware/fidocrypto.b06
 etc/firmware/fidocrypto.mdt
-bin/keyprovd
-etc/init/init.keyprovd.rc
 vendor/lib/libFIDOKeyProvisioning.so
 vendor/lib/libFidoCrypto_vendor.so
 vendor/lib64/libFIDOKeyProvisioning.so
@@ -565,10 +555,6 @@ vendor/lib/libsuntory.so
 vendor/lib64/libsuntory_utils.so
 vendor/lib64/libsuntory.so
 
-# SEMC_RIL
-etc/permissions/com.sonyericsson.android.semcrilextension.xml
-framework/semcrilextension.jar
-
 # TPM
 etc/firmware/tztpm.b00
 etc/firmware/tztpm.b01
@@ -611,55 +597,18 @@ vendor/etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/libsensorndkbridge.so
 vendor/lib64/libspl.so|5443114db96c1a534e6a338dec895af26dd9d863
 
-# Sony camera app
--app/CameraExtensionPermission-release/CameraExtensionPermission-release.apk
--app/CameraAddonPermission-release/CameraAddonPermission-release.apk
--app/CameraCommonPermission-release/CameraCommonPermission-release.apk
--app/ImageProcessorPermission-release/ImageProcessorPermission-release.apk
-etc/permissions/com.sonymobile.camera.addon.xml
-etc/permissions/com.sonymobile.imageprocessor.xml
-framework/com.sonymobile.camera.addon_impl.jar
-framework/com.sonyericsson.cameraextension_impl.jar
-framework/com.sonymobile.imageprocessor.bypasscamera_impl.jar
-lib/libimageprocessorjni.so
-lib64/libimageprocessorjni.so
--priv-app/CameraCommon/CameraCommon.apk
--priv-app/ArtFilterCamera-xxhdpi-release/ArtFilterCamera-xxhdpi-release.apk
--priv-app/TimeShiftCamera-xxhdpi-release/TimeShiftCamera-xxhdpi-release.apk
--priv-app/CameraPanorama-release/CameraPanorama-release.apk
--priv-app/SemcCameraUI-noGesture-xxhdpi-release/SemcCameraUI-noGesture-xxhdpi-release.apk
--priv-app/SoundPhotoCamera-xxhdpi-release/SoundPhotoCamera-xxhdpi-release.apk
-
-# Sony stock app suooprt
-etc/permissions/com.sony.device.xml
-etc/permissions/com.sonymobile.album.internal.xml
-etc/permissions/com.sonymobile.album.xml
-etc/permissions/privapp-permissions-sony.xml
-etc/permissions/com.sonymobile.home.resourceprovider.xml
-framework/com.sony.device.jar
-framework/com.sonymobile.album.internal.jar
-framework/com.sonymobile.home.resourceprovider.jar
-framework/com.sonymobile.album.jar
--priv-app/home-sonyEricsson-release/home-sonyEricsson-release.apk
--priv-app/album-albumLive-release/album-albumLive-release.apk
--priv-app/SemcMusic/SemcMusic.apk
-
 # SOMC: idd
 lib/libidd-plat.so
 lib/vendor.semc.system.idd@1.0.so
 lib64/libidd-plat.so
 lib64/vendor.semc.system.idd@1.0.so
 vendor/bin/iddd
-vendor/bin/lota
 vendor/bin/restorecon
 vendor/bin/mm-qcamera-daemon
 vendor/bin/hw/vendor.semc.system.idd@1.0-service
 vendor/bin/hw/vendor.semc.system.idd.fallback@1.0-service
 vendor/bin/idd-logreader
 vendor/etc/iddd.conf
-vendor/etc/init/lota.rc
-vendor/etc/init/vendor.semc.system.idd@1.0-service.rc
-vendor/etc/init/vendor.semc.system.idd.fallback@1.0-service.rc
 vendor/etc/security/idd_config.pem
 vendor/etc/security/idd_report.pem
 vendor/lib/libprotobuf-c.so
@@ -678,7 +627,6 @@ vendor/lib64/vendor.semc.system.idd.fallback@1.0_vendor.so
 lib64/vendor.semc.hardware.secd@1.0.so
 lib64/libdevice_security_client.so
 vendor/bin/secd
-# vendor/etc/init/init.secd.rc
 vendor/lib/vendor.semc.hardware.secd@1.0_vendor.so
 vendor/lib64/vendor.semc.hardware.secd@1.0_vendor.so
 vendor/bin/hw/vendor.semc.hardware.secd@1.0-service
@@ -699,15 +647,11 @@ vendor/lib64/libdevice_security.so
 vendor/lib64/libtee.so
 
 # SOMC: TA daemon / MiscTA
--sbin/tad_static:vendor/bin/tad_static
--sbin/wait4tad_static;rootfs
--sbin/fsckwait;rootfs
+-vendor/bin/tad_static
 -sbin/ua-modem-switcher;rootfs
 bin/scd
 vendor/bin/taimport
 vendor/bin/updatemiscta
-etc/permissions/com.sonymobile.miscta.xml
-framework/com.sonymobile.miscta_impl.jar
 lib/libMiscTAApi.so
 lib/libMiscTaWrapper.so
 lib/vendor.somc.hardware.miscta@1.0.so
@@ -728,7 +672,6 @@ vendor/lib64/libsmemlog.so
 -vendor/lib64/libta_drm_ext.so
 vendor/lib64/libta.so
 vendor/lib64/vendor.somc.hardware.miscta@1.0_vendor.so
--priv-app/CustomizationSelector/CustomizationSelector.apk
 
 # SOMC: Qnovo
 bin/charge_logging
@@ -953,16 +896,10 @@ vendor/lib64/libfastcvadsp_stub.so
 vendor/lib64/libfastcvopt.so
 
 # Alarm
--vendor/framework/vendor.qti.hardware.alarm-V1.0-java.jar
 vendor/lib/vendor.qti.hardware.alarm@1.0.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # Audio
--vendor/framework/semc_audioeffectif.jar
--vendor/framework/sonyaudioeffect.jar
-vendor/etc/permissions/com.sonymobile.sonyaudioeffect.xml
-vendor/etc/permissions/com.sonyericsson.audioeffectif.xml
-# -vendor/priv-app/SoundEnhancement/SoundEnhancement.apk
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -1193,9 +1130,7 @@ lib/vendor.qti.hardware.qteeconnector@1.0.so
 lib64/libGPTEE_system.so
 lib64/libQTEEConnector_system.so
 lib64/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/bin/qseecomd
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
 vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
 vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
 vendor/lib/libGPTEE_vendor.so
@@ -1237,8 +1172,6 @@ vendor/lib64/libtzdrmgenprov.so
 etc/powerhint.xml
 lib/vendor.qti.esepowermanager@1.0.so
 lib64/vendor.qti.esepowermanager@1.0.so
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib/vendor.qti.esepowermanager@1.0_vendor.so
@@ -1247,11 +1180,11 @@ vendor/lib64/vendor.qti.esepowermanager@1.0_vendor.so
 # Fingerprint sensor
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
-framework/vendor.qti.hardware.fingerprint-V1.0-java.jar:vendor/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
+framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
 
-# Gatekeeper
-vendor/lib/hw/gatekeeper.msm8996.so
-vendor/lib64/hw/gatekeeper.msm8996.so
+# Gatekeeper - from oneplus3 - 8.0.0/OPR1.170623.032/1812060016
+vendor/lib64/hw/gatekeeper.msm8996.so|3c5dacdbbba914a048ce69d7f6693a9c8505990b
+vendor/lib/hw/gatekeeper.msm8996.so|3ac31ca2b07444125c8f11de5460125b29fa86f1
 
 # GPS
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
@@ -1328,104 +1261,121 @@ vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
 
 # Graphics
-vendor/lib/egl/eglSubDriverAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/egl/libq3dtools_esx.so
-vendor/lib/hw/vulkan.msm8996.so
-vendor/lib/libC2D2.so
-vendor/lib/libCB.so
-vendor/lib/libOpenCL.so
-vendor/lib/libRSDriver_adreno.so
-vendor/lib/libadreno_utils.so
-vendor/lib/libbccQTI.so
-vendor/lib/libc2d30_bltlib.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-glnext.so
-vendor/lib/libllvm-qcom.so
-vendor/lib/librs_adreno.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib64/egl/eglSubDriverAndroid.so
-vendor/lib64/egl/libEGL_adreno.so
-vendor/lib64/egl/libGLESv1_CM_adreno.so
-vendor/lib64/egl/libGLESv2_adreno.so
-vendor/lib64/egl/libQTapGLES.so
-vendor/lib64/egl/libq3dtools_adreno.so
 vendor/lib64/egl/libq3dtools_esx.so
+vendor/lib/hw/vulkan.msm8996.so
 vendor/lib64/hw/vulkan.msm8996.so
-vendor/lib64/libC2D2.so
-vendor/lib64/libCB.so
-vendor/lib64/libOpenCL.so
-vendor/lib64/libRSDriver_adreno.so
-vendor/lib64/libadreno_utils.so
-vendor/lib64/libbccQTI.so
-vendor/lib64/libc2d30_bltlib.so
-vendor/lib64/libgsl.so
-vendor/lib64/libllvm-glnext.so
-vendor/lib64/libllvm-qcom.so
-vendor/lib64/librs_adreno.so
-vendor/lib64/librs_adreno_sha1.so
 
-# Graphics - DRM
+# Graphics - from bardock-pro - 8.1.0/OPM1.171019.026/717
+vendor/lib64/egl/eglSubDriverAndroid.so|7a51837cf3df8e18d3b305e2f0e7c5981dd39bf3
+vendor/lib64/egl/libEGL_adreno.so|cddfe278d4922a72af8c6936079c4f68d84ce735
+vendor/lib64/egl/libGLESv1_CM_adreno.so|bd5e311e73b32192051f033408f0e9e2a2beeb15
+vendor/lib64/egl/libGLESv2_adreno.so|cadee1dc03189c3c8a2a2a8e00a8b3671a46d03f
+vendor/lib64/egl/libq3dtools_adreno.so|5e02bcc77c594656506bb11ec956f617395ef2a5
+vendor/lib64/egl/libQTapGLES.so|26fd5a88024c6e2caa4c1e38f558ffef198ee017
+vendor/lib64/libadreno_utils.so|ee975322c46f7ca78c34c96c33664218f2699857
+vendor/lib64/libbccQTI.so|096c6ed5276b37917219dd88019f4cb114de68e2
+vendor/lib64/libC2D2.so|c874c737e986173a443497fe9ec383ae35b1dea0
+vendor/lib64/libc2d30_bltlib.so|ebb3a38ae89e57346049b931af00fbb0679f815c
+vendor/lib64/libc2d30-a5xx.so|9924c8e2f23007e4ba6a7febaec3179b6dc2ec41
+vendor/lib64/libCB.so|9afc316537bd1ed5632ab24b88d7be8d97e6b298
+vendor/lib64/libgsl.so|ff95072fa3874699ddf78def6fd87fda8713faae
+vendor/lib64/libllvm-glnext.so|0e7966e0ebdd67b3ab4f08988ea9d4c86e420843
+vendor/lib64/libllvm-qcom.so|9c0be7c1e411d64246bed21d3fbe5788de589876
+vendor/lib64/libllvm-qgl.so|01ced139ad869422d9ddd844e650aa0a46f26c67
+vendor/lib64/libmm-disp-apis.so|772f21209154701dac8e143b26f42870b45d3e04
+vendor/lib64/libmm-qdcm.so|a3ba21337d710378d758666eb5cdc945bbe369ae
+vendor/lib64/libOpenCL.so|f040a46da08ecb13fb2b062aa9d28c44c0d7c16b
+vendor/lib64/librs_adreno_sha1.so|9f63632a043f2b82777d000dbef66e0d269995e5
+vendor/lib64/librs_adreno.so|ce5e17ec41d6c8ca61aff22f150a783d5d35aff6
+vendor/lib64/libRSDriver_adreno.so|bfb3bc3396f3b94dd3ba4a8d7fa0b6e9c100daae
+vendor/lib/egl/eglSubDriverAndroid.so|df793571f098118d17791ba41ef6665622537420
+vendor/lib/egl/libEGL_adreno.so|19850eb12e4380deb2d04a0e1835e5aafcc35291
+vendor/lib/egl/libGLESv1_CM_adreno.so|343de28213ae734d68958fa6dd10073361a4fc04
+vendor/lib/egl/libGLESv2_adreno.so|abb5d29d954b62c49c964eb217deb8088298cdfb
+vendor/lib/egl/libq3dtools_adreno.so|d5e24aefea281a38763b74bb897ff4a6af868175
+vendor/lib/egl/libQTapGLES.so|62a4f747d7c9266f40d03d0af252fd9771a7e999
+vendor/lib/libadreno_utils.so|5f5be20be8c35428d76769ad6ed138611fb90b8c
+vendor/lib/libbccQTI.so|7bfe04f475cdd11cfade9672fabbaff9cad9de20
+vendor/lib/libC2D2.so|c4adece8dc2bf75f1aa0c2368b739d341851a1de
+vendor/lib/libc2d30_bltlib.so|9be189906fcd8f35e7c3fdc7ab547afa581d31ea
+vendor/lib/libc2d30-a5xx.so|0672672f3fb95eab090ea57553592991c13bc971
+vendor/lib/libCB.so|6ca3cfe869b742a4f18da74fe89bf7c3afc8e202
+vendor/lib/libgsl.so|60df05450231002c281e3d9327a23eed15667ecf
+vendor/lib/libllvm-glnext.so|b9932c16410d953f83b2669d0803c9698bc7e734
+vendor/lib/libllvm-qcom.so|91d082fa47a5250d1750919ed4249b6420f8fbdc
+vendor/lib/libllvm-qgl.so|a0ad235c119cc3bffee3d9b4ab286de7a2ca016f
+vendor/lib/libmm-disp-apis.so|2ce644e3fc59af10df76ca98ac75e8514489d5e2
+vendor/lib/libmm-qdcm.so|82013fd722702f735ea107a7b2d03ef9c0f70045
+vendor/lib/libOpenCL.so|8d699bb6d1245596182b89d5f774fde09372fe61
+vendor/lib/librs_adreno_sha1.so|99fc07517cc53da463d7fa7c0ba3fbe5b4f6489d
+vendor/lib/librs_adreno.so|0df4614181bc30db84ec464e6ae1da60ac7d8763
+vendor/lib/libRSDriver_adreno.so|c0551aea7d32e21efde69a6a43b8b45bf69e0528
+
+# Graphics (DRM) - from LA.UM.6.4.r1-07400-8x98.0
+vendor/lib/libsdedrm.so|e8b2700c95c94e79412049536c84e2d0b4ce58bd
+vendor/lib64/libsdedrm.so|96c6693b1ff69cd7fe6ab5cb04e67f4e0ea792bb
+
+# Graphics (HDR) - from bardock-pro - 8.1.0/OPM1.171019.026/717
+vendor/lib/libhdr_tm.so|9f191fda6909c92b29ac15c3d2cbf65c2db94b13
+vendor/lib64/libhdr_tm.so|9a61ddbece993d3329d337265f7be5278c237833
+
+# Graphics - DRM-OLD
 lib/libmediadrm.so
 lib64/libmediadrm.so
 vendor/lib/libdrm.so
 vendor/lib64/libdrm.so
 
-# Graphics - HDR
-vendor/lib/libhdr_tm.so
-vendor/lib64/libhdr_tm.so
+# Graphics (SDM) - from bardock-pro - 8.1.0/OPM1.171019.026/717
+lib64/libsdm-disp-apis.so|6a43376f167b146a8b8b571d87235a83af9841e1
+lib/libsdm-disp-apis.so|57422f6469e1e5dd2ff890742a2783237dd19395
+vendor/lib64/libscalar.so|a48bf0845cc4c2cbffc3c4a2fac6e11f3acf48ec
+vendor/lib64/libsdm-color.so|6305527de13c7f33c6cc469f01f6346f5627be82
+vendor/lib64/libsdm-diag.so|73713b128751534fa8f25d00c4d56644e8a7868a
+-vendor/lib64/libsdm-disp-vndapis.so|0770a8dc3ab6b3f385be14cd25e8b89a0e780a2e
+vendor/lib64/libsdmextension.so|d86709f8b29a09085b3d8b5fff551b690474d384
+vendor/lib64/libtinyxml2_1.so|5ffb12fd2162910fc95be463fcde04ab5c427045
+vendor/lib/libscalar.so|04bd08e3c814687226287d167351bf76e233fd86
+vendor/lib/libsdm-color.so|63e514fbb696234e775ba98d13872fa6e2bb19e8
+vendor/lib/libsdm-diag.so|340c59c6fc3374ae4aa11c7874e6f4d41ababb4f
+-vendor/lib/libsdm-disp-vndapis.so|62d364e9632d656f610f0272f1b006692d4f7d31
+vendor/lib/libsdmextension.so|1b957523a31b14b68b98a4626fc5ef7d7527d1ff
+vendor/lib/libtinyxml2_1.so|3ee768813f5b351b71bd7dd2367b13a3698a591a
 
-# Graphics - SDM
-etc/permissions/com.qti.snapdragon.sdk.display.xml
-framework/com.qti.snapdragon.sdk.display.jar
-lib/libsdm-disp-apis.so:vendor/lib/libsdm-disp-apis.so
-lib64/libsdm-disp-apis.so:vendor/lib64/libsdm-disp-apis.so
-lib/vendor.qti.hardware.qdutils_disp@1.0.so
-lib/vendor.display.color@1.0.so
-lib/vendor.display.postproc@1.0.so
+# Postprocessing - from bardock-pro - 8.1.0/OPM1.171019.026/717
+etc/permissions/com.qti.snapdragon.sdk.display.xml|0bff16d681e75f203c1e11ff33afba82490e49b3
+framework/com.qti.snapdragon.sdk.display.jar|cc367fe3c3525bc580f0d3ab41e43190dcee60dc
+lib64/libsd_sdk_display.so|8b79762452896eaa9ff97b7ae72646bfcf06423d
+lib64/vendor.display.color@1.0.so|ecd9bfd4e7f416218c172481a7192328f5c2a48f
+lib64/vendor.display.postproc@1.0.so|67e865d2c463d36c8eda8528ef4f36462b973eef
+lib64/vendor.qti.hardware.qdutils_disp@1.0.so|182817148907df624dcea5af27fd8d8256e02442
+lib/libsd_sdk_display.so|35f948fad2633f8cf2c004655e1c24fa4a2b4eaf
+lib/vendor.display.color@1.0.so|3ace5cf91dd9686a2250dfb7c50f883f81f38b74
+lib/vendor.display.postproc@1.0.so|d6069ae2c43121117acf976c79b1ce59735cfe3b
+lib/vendor.qti.hardware.qdutils_disp@1.0.so|a12b9e484ce9f7ab590b3fee91d320cba903badc
+vendor/bin/hw/vendor.display.color@1.0-service|fec0d808fa0b795bf3afe8cad8afa06dcc3bf6e1
+vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti|dc6ff7d6bdb4bd7ee248eb03e4b1e53bd04f8221
+vendor/bin/mm-pp-dpps|edb83ca84b2dd487c4e324f97cd2cee26e530c92
+vendor/etc/init/vendor.display.color@1.0-service.rc|5ad673f879b3685a0e79b5633437e5499cb94f48
+vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc|69d9cbc54f8ac0a0fb010f92bfa7de5981d643cf
+vendor/lib64/libdisp-aba.so|5b87c88bab9bbfb51333ded4bd975eea518c3b73
+vendor/lib64/vendor.display.color@1.0_vendor.so|25c717f3004a5932dcbb2f55d5165c010f7eac1a
+vendor/lib64/vendor.display.postproc@1.0_vendor.so|503ef07fcfbbfcd8db096de79dfd822c8ada5e9b
+vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|d101774878c0374ad805d964c3d00c71b44456d9
+vendor/lib/libdisp-aba.so|f8ea6bdb191722b875e64711542b8c0c388cc8d2
+vendor/lib/vendor.display.color@1.0_vendor.so|7ca706d322a38084ea2e6b103efe1acd33183400
+vendor/lib/vendor.display.postproc@1.0_vendor.so|a710a9d7f93892961ff71420fe222add0bfcf57e
+vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so|04bf21220673630ebaa4c8e7a84adbcdcf08f0dc
+
+# Graphics - SDM-OLD
 lib/libsys-utils-system.so
-lib/vendor.qti.hardware.qdutils_disp@1.0.so
-lib64/vendor.qti.hardware.qdutils_disp@1.0.so
-lib64/vendor.display.color@1.0.so
-lib64/vendor.display.postproc@1.0.so
 lib64/libsys-utils-system.so
-lib64/vendor.qti.hardware.qdutils_disp@1.0.so
--vendor/lib/libsdm-disp-vndapis.so
--vendor/lib64/libsdm-disp-vndapis.so|8ac59a32a2601a8a4b0d3b097ed02f1279f3c6b7
-vendor/bin/hw/vendor.display.color@1.0-service
-vendor/lib/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
-vendor/etc/init/vendor.display.color@1.0-service.rc
-vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0_vendor.so
-vendor/lib/vendor.display.color@1.0_vendor.so
-vendor/lib/libsdm-color.so
-vendor/lib/libsdm-diag.so
-vendor/lib/libsdmextension.so
-vendor/lib/libtinyxml2_1.so
-vendor/lib/vendor.display.postproc@1.0_vendor.so
 vendor/lib/lib-sec-disp.so
 vendor/lib64/lib-sec-disp.so
-vendor/lib64/vendor.display.color@1.0_vendor.so
-vendor/lib64/libsdm-color.so|1a9b68e5f2f09d37c2fa83907a6a70c7adb081f5
-vendor/lib64/libsdm-diag.so|25bab19a8c4453b3d20e3e1a71a0e8d3675b17b4
-vendor/lib64/libsdmextension.so|c4a416cb8c0f5dc87bee8494d70247cf049224b9
-vendor/lib64/libtinyxml2_1.so
-vendor/lib64/vendor.display.postproc@1.0_vendor.so
 
-# Keystore
-vendor/lib/hw/keystore.msm8996.so
-vendor/lib64/hw/keystore.msm8996.so
-
-# Keymaster
-vendor/lib/libkeymasterdeviceutils.so
-vendor/lib/libkeymasterprovision.so
-vendor/lib/libkeymasterutils.so
-vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libkeymasterprovision.so
-vendor/lib64/libkeymasterutils.so
+# Keystore - from oneplus3 - 8.0.0/OPR1.170623.032/1812060016
+vendor/lib64/hw/keystore.msm8996.so|66a7203806db48f1087bfa29b2a2017727d633b0
+vendor/lib/hw/keystore.msm8996.so|012e1f5bcf93b5f254a6f0b6f0dc2656ee19f804
 
 # Listen
 vendor/lib/libsurround_3mic_proc.so
@@ -1560,16 +1510,11 @@ vendor/lib64/libqmiservices.so
 
 # Radio
 -app/QtiTelephonyService/QtiTelephonyService.apk
--app/datastatusnotification/datastatusnotification.apk
--app/embms/embms.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-etc/permissions/embms.xml
 etc/permissions/lpa.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 framework/QtiTelephonyServicelibrary.jar
-framework/embmslibrary.jar
-framework/uimlpalibrary.jar
 framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 vendor/lib/vendor.qti.hardware.radio.qcrilhook@1.0_vendor.so
@@ -1683,7 +1628,6 @@ vendor/lib64/lib-uceservice.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 
 # Sensors
--vendor/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
 lib/libsensor1.so
 lib/libsensor_reg.so
 lib/libqmi_cci_system.so
@@ -1709,12 +1653,6 @@ vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Thermal
-vendor/etc/permissions/com.sonyericsson.psm.sysmonservice.thermal.xml
-vendor/framework/com.sonyericsson.psm.sysmonservice.thermal_impl.jar
-vendor/bin/hw/vendor.semc.hardware.thermal@1.0-service
-vendor/bin/thermal-engine
-vendor/etc/change.cfg
-vendor/etc/init/vendor.semc.hardware.thermal@1.0-service.rc
 vendor/lib/libthermal_engine.so
 -vendor/lib/libthermalclient.so
 vendor/lib/libsomc_thermal.so
@@ -1725,8 +1663,8 @@ vendor/lib64/libsomc_thermal.so
 vendor/lib64/vendor.semc.hardware.thermal@1.0.so
 
 # TOUCHBACKLIGHT
-vendor/bin/hw/touchbacklightd
-vendor/etc/init/init.touchbacklightd.rc
+# vendor/bin/hw/touchbacklightd
+# vendor/etc/init/init.touchbacklightd.rc
 vendor/lib/liblights-core.so
 vendor/lib64/liblights-core.so
 
@@ -1769,17 +1707,12 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 lib64/vendor.somc.hardware.wifi.supplicant@1.0.so
 vendor/bin/cnss-daemon
 vendor/bin/hw/wpa_supplicant
-vendor/bin/hw/vendor.somc.hardware.wifi@1.0-service
-vendor/etc/init/vendor.somc.hardware.wifi@1.0-service.rc
+# vendor/bin/hw/vendor.somc.hardware.wifi@1.0-service
+# vendor/etc/init/vendor.somc.hardware.wifi@1.0-service.rc
 vendor/lib64/vendor.somc.hardware.wifi@1.0_vendor.so
 
 
 # Wi-Fi Display
--app/WfdService/WfdService.apk
--framework/WfdCommon.jar
-bin/wfdservice
-etc/init/wfdservice.rc
-etc/wfdconfig.xml
 lib/libwfdservice.so
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/libFileMux.so
@@ -1800,8 +1733,6 @@ lib64/libwfdhdcpcp.so
 lib64/libwfdnative.so
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/wifidisplayhalservice
-vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
 vendor/lib/libhdcp1prov.so
@@ -1853,9 +1784,9 @@ vendor/lib64/libqti-utils.so
 vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so
 
 # SSR (subsystem restart)
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
+# vendor/bin/ssr_diag
+# vendor/bin/ssr_setup
+# vendor/bin/subsystem_ramdump
 
 # IOP
 lib/vendor.qti.hardware.iop@1.0.so
@@ -1868,8 +1799,6 @@ vendor/lib/libfeedbackhandler.so
 vendor/lib64/libfeedbackhandler.so
 
 # KOBJEVENTD
-vendor/bin/hw/kobjeventd
-vendor/etc/init/init.kobjeventd.rc
 vendor/lib/kobjeventd/touch_cover.so
 vendor/lib64/kobjeventd/touch_cover.so
 

@@ -154,6 +154,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     camera.msm8996 \
     Snap
 
@@ -251,7 +253,9 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     ueventd.rc \
-    init.radio.sh
+    init.radio.sh \
+    vendor.semc.system.idd.fallback@1.0-service.rc \
+    vendor.semc.system.idd@1.0-service.rc
 
 # Input
 PRODUCT_COPY_FILES += \

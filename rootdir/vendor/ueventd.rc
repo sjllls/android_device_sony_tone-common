@@ -306,4 +306,4 @@
 /dev/block/bootdevice/by-name/frp 0600  system      system
 
 # TA
-/dev/block/bootdevice/by-name/TA 0770  tad     tad
+/dev/block/bootdevice/by-name/TA 0770  oem_2997     oem_2997
