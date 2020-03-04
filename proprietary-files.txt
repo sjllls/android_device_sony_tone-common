@@ -1661,16 +1661,6 @@ vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Thermal
-vendor/lib/libthermal_engine.so
--vendor/lib/libthermalclient.so
-vendor/lib/libsomc_thermal.so
-vendor/lib64/libthermal_engine.so
--vendor/lib64/libthermalclient.so
-vendor/lib64/libthermalioctl.so
-vendor/lib64/libsomc_thermal.so
-vendor/lib64/vendor.semc.hardware.thermal@1.0.so
-
 # TOUCHBACKLIGHT
 # vendor/bin/hw/touchbacklightd
 # vendor/etc/init/init.touchbacklightd.rc

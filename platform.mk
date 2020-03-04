@@ -152,6 +152,11 @@ PRODUCT_PACKAGES += \
     brcm-uim-sysfs \
     libfmjni
 
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0 \
+    android.hardware.wifi@1.1 \
+    android.hardware.wifi@1.0-service
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -288,8 +293,8 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.sony
 
 # LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm
+# PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@1.0-service-sdm
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -314,6 +319,10 @@ PRODUCT_PACKAGES += \
     NfcNci \
     nfc_nci.pn54x.default \
     Tag
+
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service
 
 # NFC configurations
 PRODUCT_COPY_FILES += \
@@ -376,6 +385,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl:64 \
+    android.hardware.sensors@1.0-service \
     sensors.msm8996
 
 # Telephony
@@ -395,14 +406,14 @@ PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
 
 # Thermal
-PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
-
-# Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service \
-    thermal.msm8996
+    thermal.msm8996 \
+    thermanager
+
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/configs/thermanager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermanager.xml
 
 # USB
 PRODUCT_PACKAGES += \
