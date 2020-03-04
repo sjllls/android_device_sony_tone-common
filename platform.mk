@@ -255,7 +255,8 @@ PRODUCT_PACKAGES += \
     ueventd.rc \
     init.radio.sh \
     vendor.semc.system.idd.fallback@1.0-service.rc \
-    vendor.semc.system.idd@1.0-service.rc
+    vendor.semc.system.idd@1.0-service.rc \
+    android.hardware.drm@1.0-service.widevine.rc
 
 # Input
 PRODUCT_COPY_FILES += \

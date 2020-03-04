@@ -44,12 +44,8 @@
 #include <errno.h>
 
 #define RTC_SYS_FILE "/sys/class/rtc/rtc0/since_epoch"
-#if ANDROID_SDK_VERSION >= 26
-#define RTC_ATS_FILE "/data/vendor/time/ats_2"
-#else
 #define RTC_ATS_FILE "/data/time/ats_2"
-#endif
-#define TIME_ADJUST_PROP "persist.vendor.timeadjust"
+#define TIME_ADJUST_PROP "persist.sys.timeadjust"
 
 int read_epoch(unsigned long* epoch) {
 	int res = 0;
@@ -79,11 +75,15 @@ int read_epoch(unsigned long* epoch) {
 
 void restore_ats(unsigned long value) {
 	FILE *fp = NULL;
+	char mode[] = "0777";
+	int i;
 
+	i = strtol(mode, 0, 8);
 	value *= 1000;
 	fp = fopen(RTC_ATS_FILE, "wb");
 
 	if (fp != NULL) {
+		chmod(RTC_ATS_FILE, i);
 		fwrite(&value, sizeof(value), 1, fp);
 		fclose(fp);
 	} else {

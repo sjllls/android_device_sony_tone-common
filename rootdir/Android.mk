@@ -49,6 +49,14 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := android.hardware.drm@1.0-service.widevine.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := vendor/init/android.hardware.drm@1.0-service.widevine.rc
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := vendor.semc.system.idd.fallback@1.0-service.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
