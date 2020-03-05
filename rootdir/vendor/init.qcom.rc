@@ -135,12 +135,6 @@ on post-fs
     # start clearpad_post_probe when filesystem is available for fwflash
     write /sys/devices/virtual/input/clearpad/post_probe_start 1
 
-service logcat_charger /system/bin/logcat -b all -f /cache/logcat.txt -v threadtime
-    class main
-    user root
-    group system
-    disabled
-
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
 
@@ -355,8 +349,6 @@ on post-fs-data
     # Create directory for scd
     mkdir /dev/socket/scd 0755 system system
     mkdir /data/scd 0700 system system
-
-    start logcat_charger
 
     # SONY: Camera
     chown cameraserver camera /sys/devices/sony_camera_0/info
