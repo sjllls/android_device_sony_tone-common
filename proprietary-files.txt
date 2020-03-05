@@ -585,7 +585,9 @@ etc/firmware/tzwvcpybuf.b06
 etc/firmware/tzwvcpybuf.mdt
 
 # NFC firmware
-lib64/hw/libpn547_fw.so
+lib64/hw/libpn547_fw.so:vendor/firmware/libpn547_fw.so
+lib/hw/nfc_nci.msm8996.so:vendor/lib/hw/nfc_nci.msm8996.so
+lib64/hw/nfc_nci.msm8996.so:vendor/lib64/hw/nfc_nci.msm8996.so
 
 # RILD
 vendor/bin/hw/rild
