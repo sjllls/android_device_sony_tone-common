@@ -33,10 +33,6 @@
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">Android-Mms/2.0</string>
 
-    <!-- MMS user agent prolfile url -->
-    <string name="config_mms_user_agent_profile_url" translatable="false"
-            >http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
-
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
@@ -51,14 +47,6 @@
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"wlan0"</item>
         <item>"wigig0"</item>
-    </string-array>
-
-    <!-- List of regexpressions describing the interface (if any) that represent tetherable
-         bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
-         should be empty. -->
-    <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>"bnep\\d"</item>
-        <item>"bt-pan"</item>
     </string-array>
 
     <!-- Array of allowable ConnectivityManager network types for tethering -->
@@ -342,6 +330,9 @@
 
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
+
+    <!-- Whether the device has fingeprint sensor or not -->
+    <bool name="config_hasFingerprintSensor">true</bool>
 
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
          in hardware. -->

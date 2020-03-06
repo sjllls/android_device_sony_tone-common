@@ -103,6 +103,7 @@ vendor/lib/libmmcamera_hvx_grid_sum.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imglib_faceproc_adspstub.so
 vendor/lib/libmmcamera_interface.so
+vendor/lib/libmm-qcamera.so
 vendor/lib/libmmcamera_llvd.so
 vendor/lib/libmmcamera_optizoom_lib.so
 vendor/lib/libmmcamera_paaf_lib.so
@@ -756,12 +757,6 @@ vendor/etc/sony_effect/znr_param_48k_MainSubSoiCam.tbl
 vendor/etc/sony_effect/znr_param_48k_NoCam.tbl
 vendor/etc/sony_effect/znr_param_48k_SubSemCam.tbl
 vendor/etc/sony_effect/znr_param_48k_SubSoiCam.tbl
-
-# Bluetooth
-vendor/bin/hw/android.hardware.bluetooth@1.0-service
-vendor/etc/init/android.hardware.bluetooth@1.0-service.rc
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl.so
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl.so
 
 # Bluetooth (ANT+)
 lib/com.qualcomm.qti.ant@1.0.so

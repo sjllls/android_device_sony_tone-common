@@ -50,10 +50,10 @@
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
-            <instance>legacy/0</instance>
+            <instance>internal/0</instance>
         </interface>
     </hal>
-   <hal format="hidl">
+    <hal format="hidl">
       <name>android.hardware.cas</name>
       <transport>hwbinder</transport>
       <version>1.0</version>
@@ -298,7 +298,7 @@
     <hal format="hidl">
         <name>android.hardware.wifi</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
@@ -319,15 +319,6 @@
         <version>1.0</version>
         <interface>
             <name>IAntHci</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.bluetooth_audio</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IBluetoothAudio</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -356,19 +347,6 @@
         <interface>
             <name>IUceService</name>
             <instance>com.qualcomm.qti.uceservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.wifidisplayhal</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDSManager</name>
-            <instance>wifidisplaydshal</instance>
-        </interface>
-        <interface>
-            <name>IHDCPSession</name>
-            <instance>wifidisplayhdcphal</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -468,33 +446,6 @@
         <interface>
             <name>IFmHci</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.blobmanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IBlobManager</name>
-            <instance>BlobManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.gesturemanager</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IGestureManager</name>
-            <instance>GestureManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.improvetouch.touchcompanion</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ITouchCompanion</name>
-            <instance>TouchCompanionService</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -655,47 +606,11 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.semc.hardware.digitaltv.fullseg</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFullseg</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.semc.hardware.isdbttuner</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IIsdbttuner</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.semc.hardware.light</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IExtLight</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>vendor.semc.hardware.secd</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IDeviceSecurity</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.semc.hardware.thermal</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISomcThermalEngineWrapper</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -727,26 +642,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>vendor.somc.hardware.radio</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISomcHook</name>
-            <instance>somchook</instance>
-            <instance>somchook2</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.somc.hardware.wifi</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISomcWifi</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <sepolicy>
-        <version>26.0</version>
+        <version>27.0</version>
     </sepolicy>
 </manifest>
