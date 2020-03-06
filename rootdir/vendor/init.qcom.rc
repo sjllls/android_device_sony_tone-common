@@ -432,7 +432,7 @@ on boot
     mkdir /dev/socket/netmgr 0750 radio radio
 
     # Wifi firmware reload path
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
+    chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
