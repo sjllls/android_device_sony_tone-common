@@ -1,15 +1,6 @@
 # Camera
 etc/flashled_calc_parameters.cfg
-lib/libcacao_client.so
-lib/libcacao_pal.so
-lib/libcacao_process_ctrl_gateway.so
-lib/libcacao_service.so
 lib/libexcal_legacy.so
-lib/vendor.somc.hardware.camera.cacao@1.0.so
-lib/vendor.somc.hardware.camera.cacao@2.0.so
-lib/vendor.somc.hardware.camera.cacao@3.0.so
-lib/vendor.somc.hardware.camera.provider@1.0.so
-lib/vendor.somc.hardware.camera.device@1.0.so
 lib/libjni_imageutil.so
 lib/libjni_makeupV2.so
 lib/libjni_optizoom.so
@@ -43,25 +34,9 @@ lib64/libjni_filtergenerator.so
 lib64/libjni_pacprocessor.so
 lib64/libjni_snapcammosaic.so
 lib64/libjni_snapcamtinyplanet.so
-lib64/libcacao_client.so
-lib64/libcacao_pal.so
 lib64/libdualcameraddm.so
-lib64/vendor.somc.hardware.camera.cacao@1.0.so
-lib64/vendor.somc.hardware.camera.cacao@2.0.so
-lib64/vendor.somc.hardware.camera.cacao@3.0.so
-lib64/vendor.somc.hardware.camera.provider@1.0.so
-lib64/vendor.somc.hardware.camera.device@1.0.so
-vendor/lib/vendor.somc.hardware.camera.cacao@1.0-impl.so
-vendor/lib/vendor.somc.hardware.camera.cacao@1.0_vendor.so
-vendor/lib/vendor.somc.hardware.camera.cacao@2.0_vendor.so
-vendor/lib/vendor.somc.hardware.camera.cacao@3.0_vendor.so
-vendor/lib/hw/vendor.somc.hardware.camera.provider@1.0-impl.so
-vendor/lib/vendor.somc.hardware.camera.provider@1.0_vendor.so
 vendor/etc/camera/camera_config.xml
-vendor/lib/hw/camera.qcom.so
-vendor/lib/libcacao_common.so
-vendor/lib/libcacao_process_ctrl.so
-vendor/lib64/libcacao_common.so
+vendor/lib/hw/camera.qcom.so:vendor/lib/hw/camera.vendor.qcom.so
 vendor/lib/libcameralight.so
 vendor/lib/libcammw.so
 vendor/lib/libcammw_util.so
@@ -472,7 +447,6 @@ lib64/libidd-plat.so
 lib64/vendor.semc.system.idd@1.0.so
 vendor/bin/iddd
 vendor/bin/restorecon
-vendor/bin/mm-qcamera-daemon
 vendor/bin/hw/vendor.semc.system.idd@1.0-service
 vendor/bin/hw/vendor.semc.system.idd.fallback@1.0-service
 vendor/bin/idd-logreader
@@ -516,8 +490,6 @@ vendor/lib64/libtee.so
 
 # SOMC: TA daemon / MiscTA
 -vendor/bin/tad_static
--sbin/ua-modem-switcher;rootfs
-bin/scd
 vendor/bin/taimport
 vendor/bin/updatemiscta
 lib/libMiscTAApi.so
