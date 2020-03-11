@@ -1,5 +1,6 @@
 # Camera
 etc/flashled_calc_parameters.cfg
+vendor/bin/mm-qcamera-daemon
 lib/libexcal_legacy.so
 lib/libjni_imageutil.so
 lib/libjni_makeupV2.so
@@ -1188,7 +1189,6 @@ vendor/lib64/libdisp-aba.so
 # QMI
 etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
-vendor/bin/qmuxd
 vendor/bin/irsc_util
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
