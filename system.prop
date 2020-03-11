@@ -75,7 +75,6 @@ camera.display.lmax=1280x720
 camera.display.umax=1920x1080
 media.camera.ts.monotonic=1
 persist.camera.gyro.disable=0
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,org.cyanogenmod.snap
 
 # CNE
 persist.cne.feature=1

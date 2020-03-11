@@ -1,3 +1,6 @@
+# Camera Moudles
+vendor/lib/hw/camera.qcom.so
+
 # Camera
 etc/flashled_calc_parameters.cfg
 vendor/bin/mm-qcamera-daemon
@@ -37,7 +40,6 @@ lib64/libjni_snapcammosaic.so
 lib64/libjni_snapcamtinyplanet.so
 lib64/libdualcameraddm.so
 vendor/etc/camera/camera_config.xml
-vendor/lib/hw/camera.qcom.so:vendor/lib/hw/camera.vendor.qcom.so
 vendor/lib/libcameralight.so
 vendor/lib/libcammw.so
 vendor/lib/libcammw_util.so
