@@ -146,6 +146,9 @@ PRODUCT_PACKAGES += \
     libsensorndkbridge \
     Snap
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/firmware/camera.qcom.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/camera.qcom.so
+
 # CNE
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
