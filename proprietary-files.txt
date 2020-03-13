@@ -4,6 +4,7 @@ vendor/lib/hw/camera.qcom.so:vendor/lib/hw/camera.vendor.qcom.so
 # Camera
 etc/flashled_calc_parameters.cfg
 vendor/bin/mm-qcamera-daemon
+lib/libjnigraphics.so
 lib/libexcal_legacy.so
 lib/libjni_imageutil.so
 lib/libjni_makeupV2.so
@@ -19,6 +20,7 @@ lib/libjni_snapcammosaic.so
 lib/libdualcameraddm.so
 lib/libjni_snapcamtinyplanet.so
 lib/libcamera_clientsemc.so
+lib64/libjnigraphics.so
 lib64/libcamera_clientsemc.so
 lib64/libjni_gallery_eglfence.so
 lib64/libjni_gallery_filters.so
@@ -1477,6 +1479,10 @@ vendor/lib64/libsensor_reg.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
+
+# Time services
+-vendor/app/TimeService/TimeService.apk
+vendor/bin/time_daemon
 
 # TOUCHBACKLIGHT
 # vendor/bin/hw/touchbacklightd
