@@ -75,9 +75,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# Device was launched with M
-PRODUCT_SHIPPING_API_LEVEL := 23
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -142,9 +139,15 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
-    camera.device@3.3-impl \
     libsensorndkbridge \
     Snap
+
+PRODUCT_PACKAGES += \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    libmmlib2d_interface \
+    libmm-qcamera \
+    libqomx_core
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/firmware/camera.qcom.so:$(TARGET_COPY_OUT_VENDOR)/lib/hw/camera.qcom.so
@@ -319,18 +322,17 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libextmedia_jni \
-    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVdec \
+    libOmxVdecHevc \
     libOmxVenc \
-    libstagefrighthw \
-    android.hardware.media.omx@1.0-impl
+    libc2dcolorconvert \
+    libmm-omxcore \
+    libstagefrighthw
 
 # Power
 PRODUCT_PACKAGES += \
@@ -372,7 +374,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl:64 \
+    android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
     sensors.msm8996
 
@@ -382,8 +384,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
-
-# Time service
 
 # TextClassifier
 PRODUCT_PACKAGES += \
@@ -416,6 +416,7 @@ PRODUCT_PACKAGES += \
 
 # VNDK-SP:
 PRODUCT_PACKAGES += \
+   vndk_package \
     vndk-sp
 
 # WiFi
