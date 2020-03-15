@@ -178,6 +178,9 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     libqdMetaData.system
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/ad_calib.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/ad_calib.cfg
+
 PRODUCT_PACKAGES += \
     vendor.display.config@1.1 \
     vendor.display.config@1.1_vendor
