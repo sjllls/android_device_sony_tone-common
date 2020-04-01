@@ -440,6 +440,10 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.1 \
     android.hardware.wifi@1.0-service
 
+# Debug
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=0
+
 $(call inherit-product, device/sony/tone-common/firmware/device-bcm-vendor.mk)
 
 # WiFi BCM configurations
