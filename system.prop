@@ -65,6 +65,7 @@ bluetooth.hfp.client=1
 persist.bluetooth.avrcpversion=avrcp16
 ro.bluetooth.hfp.ver=1.7
 ro.bt.bdaddr_path=/data/etc/bluetooth_bdaddr
+persist.vendor.bt.enable.splita2dp=false
 
 # Backlight
 sys.backlight_on=1
