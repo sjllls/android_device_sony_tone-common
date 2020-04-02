@@ -205,11 +205,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Fingerprint sensor
+# Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service \
-    fingerprintd \
-    fingerprint.msm8996
+    android.hardware.biometrics.fingerprint@2.1 \
+    android.hardware.biometrics.fingerprint@2.1-service.sony
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
