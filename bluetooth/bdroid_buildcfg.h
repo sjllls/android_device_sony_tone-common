@@ -24,7 +24,7 @@
 static inline const char* getBTDefaultName()
 {
     char device[PROPERTY_VALUE_MAX];
-    property_get("ro.boot.hardware", device, "");
+    property_get("ro.product.device", device, "");
 
     if (!strcmp("dora", device)) {
         return "Xperia X Performance";
