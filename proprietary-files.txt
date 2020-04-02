@@ -819,6 +819,7 @@ vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
 
 # CNE
 -priv-app/CNEService/CNEService.apk
+etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
 framework/cneapiclient.jar
@@ -1226,6 +1227,7 @@ vendor/lib/libdisp-aba.so
 vendor/lib64/libdisp-aba.so
 
 # QMI
+etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
 etc/permissions/qti_permissions.xml
 vendor/bin/irsc_util
 vendor/lib/libdiag.so
@@ -1260,14 +1262,20 @@ vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmiservices.so
 
 # Radio
+-app/embms/embms.apk
+-app/datastatusnotification/datastatusnotification.apk
+-app/uceShimService/uceShimService.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 etc/permissions/lpa.xml
+etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 framework/QtiTelephonyServicelibrary.jar
+framework/embmslibrary.jar
 framework/qcrilhook.jar
-framework/qti-telephony-common.jar
+framework/uimlpalibrary.jar
+framework/qti-telephony-common.jar|2eba987ae297a892e895ec1e9a302b41dbe0232e
 vendor/lib/vendor.qti.hardware.radio.qcrilhook@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.qtiradio@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.uim@1.0_vendor.so
@@ -1325,7 +1333,6 @@ vendor/radio/qcril_database/qcril.db
 # Radio - IMS
 -app/ims/ims.apk
 etc/permissions/qti-vzw-ims-internal.xml
-# -app/uceShimService/uceShimService.apk
 lib/com.qualcomm.qti.imscmservice@1.0.so
 lib/lib-imscamera.so
 lib/lib-imsvideocodec.so
