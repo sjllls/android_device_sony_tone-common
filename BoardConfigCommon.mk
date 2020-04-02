@@ -176,7 +176,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
-# BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Wi-Fi definitions for Broadcom solution
 BOARD_WLAN_DEVICE           := bcmdhd
