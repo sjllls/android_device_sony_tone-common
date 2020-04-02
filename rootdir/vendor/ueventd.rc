@@ -204,6 +204,7 @@
 /dev/tsc_ci0              0660   media       media
 
 # sensors
+/dev/sensors              0660   system      system
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system
@@ -256,17 +257,8 @@
 /sys/bus/pci/drivers/wil6210* 0000:01:00.0/net/wigig0/gro_flush_timeout 0660 system system
 /sys/devices/virtual/net/bond0 queues/rx-0/rps_cpus 0660 system system
 
-#nfc permissions
-#/dev/nfc-nci              0660    nfc         nfc
-#/dev/nq-nci               0660    nfc         nfc
-#/dev/assd                 0660    nfc         nfc
-
 # NFC
-/sys/devices/soc/75b6000.i2c/i2c-8/8-0028  init_deinit 0200    nfc     nfc
-/sys/devices/soc/75b6000.i2c/i2c-8/8-0028  set_pwr     0200    nfc     nfc
-/sys/devices/soc/75b6000.i2c/i2c-8/8-0028  res_ready   0400    nfc     nfc
-/sys/devices/soc/75b6000.i2c/i2c-8/8-0028  recv_rsp    0600    nfc     nfc
-/sys/devices/soc/75b6000.i2c/i2c-8/8-0028  send_cmd    0200    nfc     nfc
+/dev/pn547                0660   nfc        nfc
 
 # UIO devices
 /dev/uio0                 0660   system     system
@@ -285,9 +277,18 @@
 # Fingerprint device
 /dev/qbt1000              0660   system     system
 
+# BT
+/dev/hidraw*                                        0666 system    system
+/dev/rfkill                                         0660 bluetooth bluetooth
+/dev/ttyHS0                                         0660 bluetooth bluetooth
+/dev/ttyMSM0                                        0660 bluetooth bluetooth
+
 #ImproveTouch device
 /dev/hbtp_input           0660   system     system
 /dev/hbtp_vm              0660   system     system
+
+# Fingerprint sensor device
+/dev/fpc1145              0664   system     input
 
 # Kmsg device
 /dev/kmsg                                               0620   root       system
@@ -299,9 +300,6 @@
 /sys/devices/soc/soc:fpc1145 spi_prepare      0220 system input
 /sys/devices/soc/soc:fpc1145 irq              0660 system input
 /sys/devices/soc/soc:fpc1145 wakeup_enable    0220 system input
-
-# Audio Sony Effect tuning parameter setting device
-/dev/sony_hweffect_params 0660  system      audio
 
 /dev/block/bootdevice/by-name/frp 0600  system      system
 

@@ -358,6 +358,16 @@ on post-fs-data
     mkdir /data/fpc_images/enroll 0770 system system
     mkdir /data/fpc 0770 system system
 
+    # Required for fingerprint
+    chown system system /sys/bus/spi/devices/spi0.1/clk_enable
+    chmod 0660 /sys/bus/spi/devices/spi0.1/clk_enable
+    chown system system /sys/devices/soc/fpc1145_device/spi_prepare
+    chmod 0660 /sys/devices/soc/fpc1145_device/spi_prepare
+    chown system system /sys/devices/soc/fpc1145_device/wakeup_enable
+    chmod 0660 /sys/devices/soc/fpc1145_device/wakeup_enable
+    chown system system /sys/devices/soc/fpc1145_device/irq
+    chmod 0660 /sys/devices/soc/fpc1145_device/irq
+
     mkdir /data/credmgr 0770 system oem_2996
 
     mkdir /data/etc 0755 root shell
