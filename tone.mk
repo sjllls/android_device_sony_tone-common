@@ -383,6 +383,7 @@ PRODUCT_COPY_FILES += \
 
 # Shim
 PRODUCT_PACKAGES += \
+    libshim_binder \
     libtone_shim \
     libbase_shim
 

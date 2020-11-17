@@ -97,6 +97,10 @@ function blob_fixup() {
     vendor/etc/permissions/qti-vzw-ims-internal.xml)
         sed -i -e 's|file="/system/vendor/|file="/vendor/|g' "${2}"
         ;;
+
+    vendor/lib64/libtpm.so)
+        patchelf --add-needed "libshim_binder.so" "${2}"
+        ;;
     esac
 }
 
