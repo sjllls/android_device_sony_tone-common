@@ -182,6 +182,12 @@ TARGET_LD_SHIM_LIBS := \
   /system/lib64/lib-imsvt.so|libtone_shim.so \
   /system/lib64/lib-imsvideocodec.so|libtone_shim.so
 
+# VNDK
+BOARD_VNDK_RUNTIME_DISABLE := true
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+BOARD_VNDK_VERSION := current
+
 # Wifi
 BOARD_WLAN_DEVICE           := bcmdhd
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211

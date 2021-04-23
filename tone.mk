@@ -192,7 +192,7 @@ PRODUCT_PACKAGES += \
     libvulkan
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
+    $(LOCAL_PATH)/configs/calib.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/calib.cfg
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -411,6 +411,9 @@ PRODUCT_PACKAGES += \
     thermal.msm8996 \
     android.hardware.thermal@1.0-impl \
     android.hardware.thermal@1.0-service
+
+# Treble
+PRODUCT_USE_VNDK_OVERRIDE := false
 
 # Trust HAL
 PRODUCT_PACKAGES += \
