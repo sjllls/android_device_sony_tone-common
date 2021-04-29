@@ -10,3 +10,4 @@ sys.listeners.registered         u:object_r:vendor_tee_listener_prop:s0
 oem.device.imeicache             u:object_r:qcom_ims_prop:s0
 sys.fake_bs_flag0                u:object_r:system_radio_prop:s0
 persist.cash.                    u:object_r:vendor_camera_prop:s0
+persist.vendor.powerhal.        u:object_r:vendor_powerhal_prop:s0

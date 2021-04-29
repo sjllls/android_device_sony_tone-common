@@ -29,8 +29,18 @@
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,jpeg/video4linux/video[0-9]+/name(/.*)?    u:object_r:sysfs_graphics:s0
 /sys/kernel/boot_wlan(/.*)?                                                             u:object_r:sysfs_wifi:s0
 /sys/module/bcmdhd/parameters/firmware_path                                             u:object_r:sysfs_wifi:s0
-/sys/devices/virtual/input/input[0-9]+/enable_ps_sensor                                 u:object_r:sysfs_tof_sensor:s0
-/sys/devices/virtual/input/input[0-9]+/set_use_case                                     u:object_r:sysfs_tof_sensor:s0
+
+# Input device control nodes, mainly for CASH to control power
+/sys/devices/virtual/input/input[0-9]+/chip_id                                               u:object_r:sysfs_input_control:s0
+/sys/devices/virtual/input/input[0-9]+/chip_pow                                              u:object_r:sysfs_input_control:s0
+# Input device names, mainly for CASH to enumerate
+/sys/devices/virtual/input/input[0-9]+/name                                                  u:object_r:sysfs_input_name:s0
+# ToF sensor for CASH
+/sys/devices/virtual/input/input[0-9]+/set_use_case                                          u:object_r:sysfs_tof_sensor:s0
+/sys/devices/virtual/input/input[0-9]+/set_ref_spads                                         u:object_r:sysfs_tof_sensor:s0
+/sys/devices/virtual/input/input[0-9]+/set_um_offset                                         u:object_r:sysfs_tof_sensor:s0
+# RGBCIR sensor for CASH
+/sys/devices/virtual/input/input[0-9]+/als_(.*)+                                             u:object_r:sysfs_rgbc_sensor:s0
 
 # Data files
 /data/connectivity(/.*)?                      u:object_r:cnd_core_data_file:s0

@@ -3,3 +3,4 @@ type semc_version_prop, property_type;
 type tareset_notfirstboot_prop, property_type;
 type vendor_net_radio_prop, property_type;
 type vendor_cash_prop, property_type;
+type vendor_powerhal_prop, property_type;
