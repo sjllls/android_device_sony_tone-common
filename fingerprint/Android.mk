@@ -20,7 +20,8 @@ LOCAL_SHARED_LIBRARIES := \
     libhardware \
     libutils \
     libdl \
-    android.hardware.biometrics.fingerprint@2.1
+    android.hardware.biometrics.fingerprint@2.1 \
+    android.hardware.biometrics.fingerprint@2.1.vendor
 
 LOCAL_CONLYFLAGS := -std=c99
 
