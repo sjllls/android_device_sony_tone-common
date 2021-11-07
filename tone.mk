@@ -136,6 +136,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
+    android.frameworks.sensorservice@1.0.vendor \
     camera.msm8996
 
 PRODUCT_PACKAGES += \
